@@ -1,0 +1,17 @@
+<h1> Posts Index </h1>
+
+<div class="container">
+<div class="row">
+  <% posts.forEach((post) => { %>
+    <div>
+      <div class="card">
+          <h2><%= post.type %></h2>
+          <a href="/posts/<%= post.id %>">
+            <h4><%= post.title %></h4>
+          </a>
+          <p><%= post.content %></p>
+      </div>
+    </div>
+  <% }) %>
+</div>
+</div>

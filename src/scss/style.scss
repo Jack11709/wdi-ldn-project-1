@@ -1,3 +1,15 @@
-body {
-  background-color: dodgerblue;
+@import "bootstrap/bootstrap-grid";
+
+.nav {
+  li {
+    display: inline;
+  }
+}
+#right{
+  float: right;
+}
+.statbar {
+  height: 400px;
+  width: 200px;
+  background-color: lightgrey;
 }
