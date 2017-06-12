@@ -1,13 +1,26 @@
 <h1><%= user.username %></h1>
 
-<h4><%= user.firstName %></h4>
-<h4><%= user.lastName %></h4>
 
 <p><%= user.email %></p>
 
-<a href="/profile/edit" class="button">Edit</a>
+<% if(locals.isLoggedIn && currentUser.id === user.id ) { %>
+<a href="/users/<%= currentUser.id %>/edit" class="button">Edit</a>
 
-<form method="POST" action="/profile">
+<form method="POST" action="/users">
   <input type="hidden" name="_method" value="DELETE">
   <button class="button alert">Delete</button>
 </form>
+<% } %>
+
+<h4> Current Posts: </h4>
+<% posts.forEach((post) => { %>
+  <div>
+    <div class="card">
+        <h2><%= post.type %></h2>
+        <a href="/posts/<%= post.id %>">
+          <h4><%= post.title %></h4>
+        </a>
+        <p> Comments: <%= post.comments.length %>
+    </div>
+  </div>
+  <% }) %>

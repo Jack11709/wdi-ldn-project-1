@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Post = require('../models/post');
 
 function newRoute(req, res) {
   return res.render('registrations/new');
@@ -14,12 +15,40 @@ function createRoute(req, res, next) {
     });
 }
 
-function showRoute(req, res) {
-  return res.render('registrations/show');
+// function showRoute(req, res) {
+//   return res.render('registrations/show');
+// }
+
+function showRoute(req, res, next ) {
+  User
+  .findById(req.params.id)
+  .exec()
+  .then((user) => {
+    if(!user) return res.notFound();
+    return Post
+    .find({ createdBy: user })
+    .exec()
+    .then((posts) => {
+      return res.render('registrations/show', { user, posts });
+    });
+
+  })
+  .catch(next);
 }
 
-function editRoute(req, res) {
-  return res.render('registrations/edit');
+// function editRoute(req, res) {
+//   return res.render('registrations/edit');
+// }
+
+function editRoute(req, res, next ) {
+  User
+  .findById(req.params.id)
+  .exec()
+  .then((user) => {
+    if(!user) return res.notFound();
+    return res.render('registrations/edit', { user });
+  })
+  .catch(next);
 }
 
 function updateRoute(req, res, next) {
@@ -28,9 +57,9 @@ function updateRoute(req, res, next) {
   }
 
   req.user.save()
-    .then(() => res.redirect('/profile'))
+    .then(() => res.redirect('/users'))
     .catch((err) => {
-      if(err.name === 'ValidationError') return res.badRequest('/profile/edit', err.toString());
+      if(err.name === 'ValidationError') return res.badRequest('/users/edit', err.toString());
       next(err);
     });
 }

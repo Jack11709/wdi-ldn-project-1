@@ -1,14 +1,15 @@
 <h1>Posts Show</h1>
 <h1><%= post.type %></h1>
+<p> Posted by: <a href="/users/<%= post.createdBy.id %>"><%= post.createdBy.username %></p></a>
 
 <h2><%= post.title %></h2>
 
 <p><%= post.content %></h3>
 
-<p> Created by: <%= post.createdBy.username %>
 
 
-<% if(locals.isLoggedIn) { %>
+
+<% if(locals.isLoggedIn && post.belongsTo(currentUser)) { %>
   <a href="/posts/<%= post.id %>/edit" class="btn btn-primary">Edit</a>
             <form method="POST" action="/posts/<%= post.id %>">
               <input type="hidden" name="_method" value="DELETE">
@@ -32,7 +33,7 @@
       <p><%= comment.content %></p>
       <small><%= comment.createdBy.username %></small>
 
-      <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+      <% if(locals.isLoggedIn && comment.belongsTo(currentUser)) { %>
         <form method="POST" action="/posts/<%= post.id %>/comments/<%= comment.id %>">
           <input type="hidden" name="_method" value="DELETE">
           <button>Delete comment</button>

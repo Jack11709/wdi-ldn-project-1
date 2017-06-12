@@ -1,1 +1,23 @@
 <h1> Posts Edit </h1>
+<div class="container">
+  <form method="POST" action="/posts/<%= post.id %>">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="row">
+      <label for="type">Post Type</label>
+      <select name= "type" id="type" required>
+        <option>Question</option>
+        <option>Opinion</option>
+        <option>Looking for League</option>
+      </div>
+      <div class="row">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+      </div>
+      <div class="row">
+        <textarea name="content" id="content" required><%= post.content%></textarea>
+      </div>
+      <div>
+        <button class="btn">Edit</button>
+      </div>
+    </form>
+  </div>

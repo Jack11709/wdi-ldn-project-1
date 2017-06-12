@@ -28,12 +28,15 @@ router.route('/register')
   .get(registrationsController.new)
   .post(registrationsController.create);
 
-router.route('/profile')
-  .get(secureRoute, registrationsController.show)
+router.route('/users')
+  // .get(secureRoute, registrationsController.show)
   .put(secureRoute, registrationsController.update)
   .delete(secureRoute, registrationsController.delete);
 
-router.route('/profile/edit')
+router.route('/users/:id')
+  .get(registrationsController.show);
+
+router.route('/users/:id/edit')
   .get(secureRoute, registrationsController.edit);
 
 router.route('/login')

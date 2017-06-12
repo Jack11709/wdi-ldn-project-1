@@ -9,7 +9,7 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <div class="container">
+    <header>
       <div class="nav left">
         <ul>
           <li><a href="/">Homepage</a></li>
@@ -20,10 +20,10 @@
             <li id="right"><a href="/login">Login</a></li>
             <% } else { %>
               <li id="right"><a href="/logout">Logout</a></li>
-              <li id="right"><a href="/profile"><%= user.username %></a></li>
+              <li id="right"><a href="/users/<%= currentUser.id %>"><%= currentUser.username %></a></li>
             <% } %>
     </div>
-</div>
+  </header>
 <div class="container">
   <div class="row">
     <div class="col-lg-9">
