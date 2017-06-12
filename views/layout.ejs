@@ -14,7 +14,7 @@
         <ul>
           <li><a href="/">Homepage</a></li>
           <li><a href="/posts">Posts</a></li>
-          <li><a href="/posts/new">Add Post</a></li>
+          <li><a href="/posts/new">New Post</a></li>
           <% if(!locals.isLoggedIn) { %>
             <li id="right"><a href="/register">Register</a></li>
             <li id="right"><a href="/login">Login</a></li>
@@ -26,11 +26,14 @@
   </header>
 <div class="container">
   <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-8">
       <%- body %>
     </div>
     <aside>
-      <div class="col-lg-3 statbar">
+      <div class="statbar">
+        <h3 class="statslabel"></h3>
+        <ul class="stats">
+        </ul>
       </div>
     </aside>
   </div>

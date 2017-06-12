@@ -1,14 +1,15 @@
-<h1> Posts Index </h1>
+<h1> Posts </h1>
 
 <div class="container">
 <div class="row">
   <% posts.forEach((post) => { %>
     <div>
       <div class="card">
+        <a href="/posts/<%= post.id %>">
           <h2><%= post.type %></h2>
-          <a href="/posts/<%= post.id %>">
-            <h4><%= post.title %></h4>
-          </a>
+        </a>
+          <h3><%= post.title %></h3>
+
           <p><%= post.content %></p>
           <p> Posted by: <a href="/users/<%= post.createdBy.id %>"><%= post.createdBy.username %></a></p>
           <p> Comments: <%= post.comments.length %>

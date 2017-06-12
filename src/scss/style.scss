@@ -11,3 +11,25 @@
   float: right;
   padding: 0 20px;
 }
+
+.name{
+  text-align: center;
+  font-size: 40px;
+}
+
+.statbar {
+  margin: 50px 80px 80px 80px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  position: fixed;
+  background-color: lightgrey;
+}
+
+.stats{
+  li {
+    font-size: 15px;
+    list-style: decimal;
+    line-height: 35px;
+  }
+}
