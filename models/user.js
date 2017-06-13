@@ -4,17 +4,23 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, trim: true, unique: true },
   username: { type: String, required: true, trim: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  facebookId: { type: Number }
 });
 
 userSchema
-  .virtual('passwordConfirmation')
-  .set(function setPasswordConfirmation(passwordConfirmation) {
-    this._passwordConfirmation = passwordConfirmation;
-  });
+.virtual('passwordConfirmation')
+.set(function setPasswordConfirmation(passwordConfirmation) {
+  this._passwordConfirmation = passwordConfirmation;
+});
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(this._passwordConfirmation && this._passwordConfirmation !== this.password) this.invalidate('passwordConfirmation', 'does not match');
+  if(!this.password && !this.facebookId) {
+    this.invalidate('password', 'required');
+  }
+  if(this.password && this._passwordConfirmation !== this.password){
+    this.invalidate('passwordConfirmation', 'does not match');
+  }
   next();
 });
 

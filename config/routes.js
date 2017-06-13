@@ -4,7 +4,10 @@ const registrationsController = require('../controllers/registration');
 const secureRoute = require('../lib/secureRoute');
 const postsController = require('../controllers/posts');
 const staticsController = require('../controllers/statics');
+const oauth = require('../controllers/oauth');
 
+router.route('/oauth/facebook')
+  .get(oauth.facebook);
 
 router.route('/')
   .get(staticsController.index);

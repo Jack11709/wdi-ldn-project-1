@@ -24,9 +24,12 @@
   padding: 20px;
   position: fixed;
   background-color: lightgrey;
+  p {
+    text-align: center;
+  }
 }
 
-.stats{
+.stats {
   li {
     font-size: 15px;
     list-style: decimal;
