@@ -6,12 +6,16 @@ const postsController = require('../controllers/posts');
 const staticsController = require('../controllers/statics');
 const oauth = require('../controllers/oauth');
 const upload = require('../lib/upload');
+const statsController = require('../controllers/stats');
 
 router.route('/oauth/facebook')
   .get(oauth.facebook);
 
 router.route('/')
   .get(staticsController.index);
+
+router.route('/stats')
+  .get(statsController.index);
 
 router.route('/posts')
   .get(postsController.index)

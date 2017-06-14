@@ -13,6 +13,20 @@ $(() => {
   });
 
 
+  $('#statsForm').on('change',(e) => {
+    $('.remove').remove();
+    const pos = $(e.target).val();
+    $.get(`http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&position=${pos}&format=json`)
+    .done((data) => {
+      for(let i = 0; i < 15; i++){
+        $('.statsTable').append(`<tr class="remove"><td>${data.positions[`${pos}`][i].rank}</td><td>${data.positions[`${pos}`][i].firstName} ${data.positions[`${pos}`][i].lastName}</td><td>${data.positions[`${pos}`][i].teamAbbr}</td><td>${data.positions[`${pos}`][i].pts}</td></tr>`);
+
+      }
+    });
+
+  });
+
+
 
 
 });
