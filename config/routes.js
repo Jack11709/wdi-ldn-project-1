@@ -5,6 +5,7 @@ const secureRoute = require('../lib/secureRoute');
 const postsController = require('../controllers/posts');
 const staticsController = require('../controllers/statics');
 const oauth = require('../controllers/oauth');
+const upload = require('../lib/upload');
 
 router.route('/oauth/facebook')
   .get(oauth.facebook);
@@ -29,11 +30,11 @@ router.route('/posts/:id/edit')
 
 router.route('/register')
   .get(registrationsController.new)
-  .post(registrationsController.create);
+  .post( upload.single('image'),registrationsController.create);
 
 router.route('/users')
   // .get(secureRoute, registrationsController.show)
-  .put(secureRoute, registrationsController.update)
+  .post(secureRoute, upload.single('image'), registrationsController.update)
   .delete(secureRoute, registrationsController.delete);
 
 router.route('/users/:id')

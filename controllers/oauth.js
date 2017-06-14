@@ -17,7 +17,7 @@ function facebook(req, res, next) {
   .then((token) => {
     return rp({
       method: 'GET',
-      url: 'https://graph.facebook.com/v2.5/me?fields=id,name,email,picture.height(961)',
+      url: 'https://graph.facebook.com/v2.5/me?fields=id,name,email,picture.height(100)',
       qs: token,
       json: true
     });
@@ -33,7 +33,7 @@ function facebook(req, res, next) {
         });
       }
       user.facebookId = profile.id;
-      user.profileImage = profile.picture.data.url;
+      user.image = profile.picture.data.url;
       return user.save();
     });
   })

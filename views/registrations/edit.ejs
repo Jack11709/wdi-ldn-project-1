@@ -1,7 +1,6 @@
 <h2> Profile Edit </h2>
 
-<form method="POST" action="/users">
-  <input type="hidden" name="_method" value="PUT">
+<form method="POST" action="/users" enctype="multipart/form-data">
   <div>
     <label for="email">Email</label>
     <input type="email" name="email" id="email" value="<%= user.email %>" required>
@@ -11,7 +10,11 @@
     <input type="username" name="username" id="username" value="<%= user.username %>" required>
   </div>
   <div>
-    <label for="password">Password</label>
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image">
+  </div>
+  <div>
+    <label for="password">Re-Enter Password</label>
     <input type="password" name="password" id="password" required>
   </div>
   <div>
