@@ -36,7 +36,16 @@ userSchema.pre('save', function hashPassword(next) {
 });
 
 userSchema.pre('remove', function removeUserPosts(next) {
-  this.model('Post').remove({ createdBy: this.id }, next);
+  this.model('Post')
+    .remove({ createdBy: this.id })
+    .then(() => {
+      return this.model('Post').update(
+        { 'comments.createdBy': this.id }, // this is the query
+        { $pull: { comments: { createdBy: this.id } } } // this is the update
+      );
+    })
+    .then(next)
+    .catch(next);
 });
 
 userSchema.methods.validatePassword = function validatePassword(password) {

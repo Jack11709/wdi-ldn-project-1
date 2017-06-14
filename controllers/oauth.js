@@ -40,7 +40,7 @@ function facebook(req, res, next) {
   .then((user) => {
     req.session.userId = user.id;
     req.session.isLoggedIn = true;
-    req.flash('info', `welcome back ${user.username}`);
+    req.flash('info', `Welcome Back ${user.username}`);
     res.redirect('/');
   })
   .catch(next);

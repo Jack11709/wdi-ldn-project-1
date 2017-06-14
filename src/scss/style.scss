@@ -1,8 +1,31 @@
 @import "bootstrap/bootstrap-grid";
 
+body {
+  font-family: 'Oswald';
+  background-color: #41464f;
+}
+
+h1 {
+  color: white;
+  .n{
+    color: red;
+  }
+  .f{
+    color: white;
+  }
+  .l{
+    color: blue;
+  }
+}
+a{
+  text-decoration: none;
+  color: #dce2ed;
+}
 
 .nav {
   li {
+    font-weight: bold;
+    font-size: 25px;
     display: inline;
     padding: 0 20px;
   }
