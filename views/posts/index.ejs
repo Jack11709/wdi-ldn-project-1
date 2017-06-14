@@ -1,10 +1,22 @@
 <h1> Posts </h1>
 
+<form class="filter">
+  <div>
+    <select name="type" id="type" required>
+      <option value="all"=>All</option>
+      <option value="Question">Question</option>
+      <option value="Opinion">Opinion</option>
+      <option value="Looking for League">Looking for League</option>
+    </select>
+  </div>
+</form>
+
+
 <div class="container">
 <div class="row">
   <% posts.forEach((post) => { %>
     <div>
-      <div class="card">
+      <div class="card" data-type="<%= post.type %>">
         <a href="/posts/<%= post.id %>">
           <h2><%= post.type %></h2>
         </a>

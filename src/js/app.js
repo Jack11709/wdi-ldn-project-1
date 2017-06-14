@@ -1,8 +1,25 @@
 $(() => {
+  getNews();
+  ranking();
+
+
+  $('#type').on('change',(e) => {
+    if($(e.target).val() === 'all'){
+      $('.card').show();
+    } else {
+      $('.card').show();
+      $('.card').not(`[data-type="${$(e.target).val()}"]`).hide();
+    }
+  });
+
+
+
+
+});
+
+function ranking(){
   let rankPicker = 1;
   rankPicker = Math.floor(Math.random() * 4) + 1;
-  getNews();
-
   if(rankPicker === 1){
     editorRanks();
   } else if (rankPicker === 2){
@@ -12,9 +29,7 @@ $(() => {
   } else {
     wrRanks();
   }
-
-
-});
+}
 
 
 function getNews(){
