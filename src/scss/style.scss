@@ -168,17 +168,46 @@ td {
   color: black;
   text-align: center;
   font-family: 'Oswald';
-  margin: 20px;
+  margin: 20px auto;
+  &.danger {
+    background-color: red;
+  }
+  &.com {
+    width: 200px;
+  }
 }
 .link{
   line-height: 40px;
 }
-.danger {
-  background-color: red;
-}
-.com {
-  width: 200px;
-}
 .content {
   width: 100%;
+  height: 200px;
+  margin: 0 30px;
+}
+h1 {
+  text-align: center;
+}
+.postForm {
+  margin: 0 auto;
+  padding: 20px 150px 20px ;
+}
+.formSelect {
+  padding: 20px 31% 0;
+}
+.formTitle {
+  margin: 20px 31%;
+}
+.formbtn {
+  margin: 20px 45%;
+}
+.statFilter {
+  margin: 10px 40%;
+}
+.statsTable {
+  margin: 10px 15%;
+  padding: 5px;
+  font-size: 20px;
+}
+.hide {
+  display: none;
 }

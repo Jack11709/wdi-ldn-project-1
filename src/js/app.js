@@ -14,6 +14,7 @@ $(() => {
 
 
   $('#statsForm').on('change',(e) => {
+    $('.statsTable').removeClass('hide');
     $('.remove').remove();
     const pos = $(e.target).val();
     $.get(`http://api.fantasy.nfl.com/v1/players/scoringleaders?season=2016&position=${pos}&format=json`)

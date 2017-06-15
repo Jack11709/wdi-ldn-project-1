@@ -1,24 +1,14 @@
-<div class="postFormContainer">
-<h1>New Post </h1>
-<form class="postForm" method="POST" action="/posts">
-  <div class="row">
-    <label for="type">Post Type</label>
+
+  <h1>New Post </h1>
+  <form class="postForm" method="POST" action="/posts">
+    <div class="formSelect">
     <select name="type" id="type" required>
       <option>Question</option>
       <option>Opinion</option>
       <option>Looking for League</option>
     </select>
-    </div>
-    <div class="row">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" placeholder="Post Title" required>
-    </div>
-    <div class="row">
-      <label for="content">What would you like to say?</label>
-      <textarea name="content" id="content" required></textarea>
-    </div>
-    <div class="row">
-    <button class="btn">Add</button>
   </div>
+    <input type="text" name="title" id="title" placeholder="Title" class="formTitle" required>
+    <textarea name="content" id="content" class="content"required></textarea>
+    <button class="btn formbtn">Post</button>
   </form>
-</div>
