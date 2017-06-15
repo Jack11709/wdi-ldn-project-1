@@ -60,7 +60,7 @@ function getNews(){
 function editorRanks(){
   $.get('http://api.fantasy.nfl.com/v1/players/editordraftranks?format=json')
   .done((stats) => {
-    $('.statslabel').html('2017 Editor\'s Draft Ranks');
+    $('.statslabel').html('2017 Editors Draft Ranks');
     for(let i = 0; i < 15; i++){
       $('.stats').append(`<li>${stats.players[i].position} ${stats.players[i].firstName} ${stats.players[i].lastName}</li>`);
     }

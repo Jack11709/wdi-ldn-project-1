@@ -3,42 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>Project 1</title>
-  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="/js/app.js" charset="utf-8"></script>
+  <% include ./partials/_scripts.ejs %>
 </head>
 <body>
   <header>
-    <nav>
-      <ul class="left">
-        <li class="logo"><a href="/"><img src="https://www.eticketing.co.uk/nfl/site/assets/logo-main.png"></a></li>
-      </ul>
-      <ul class="right">
-        <li><a href="/posts">Posts</a></li>
-        <li><a href="/posts/new">New Post</a></li>
-        <li><a href="/stats">Stats</a></li>
-
-        <% if(!locals.isLoggedIn) { %>
-          <li><a href="/register">Register</a></li>
-          <li><a href="/login">Login</a></li>
-        <% } else { %>
-          <li><a href="/users/<%= currentUser.id %>"><%= currentUser.username %></a></li>
-          <li><a href="/logout">Logout</a></li>
-        <% } %>
-      </ul>
-    </nav>
+    <% include ./partials/_navbar.ejs %>
   </header>
   <% for (const type in messages) { %>
-  <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+    <p class="alert alert-<%= type %>"><%= messages[type] %></p>
   <% } %>
   <div class="container mainContainer">
     <div class="row">
       <div class="col-lg-8">
         <%- body %>
       </div>
-      <aside>
+      <aside class="col-lg-4">
         <div class="statbar">
           <h3 class="statslabel"></h3>
           <ul class="list-group stats">

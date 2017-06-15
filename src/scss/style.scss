@@ -37,6 +37,12 @@ nav {
 
       li {
         padding: 42px 20px;
+        &.menu {
+          color: white;
+          cursor: pointer;
+          font-size: 20px;
+          display: none;
+        }
       }
     }
     margin-top: 0;
@@ -93,11 +99,11 @@ footer{
 
 .statbar {
   text-align: center;
-  width: 350px;
+  width: 320px;
   margin: 32px 80px 10px 80px;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
   border-radius: 5px;
-  padding: 20px 80px;
+  padding: 20px 60px;
   position: fixed;
   background-color: white;
   p {
@@ -227,4 +233,17 @@ th{
 h4{
   margin-top: 40px;
   text-align: center;
+}
+@media only screen and (max-width: 900px) {
+  aside {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .card {
+    width: 350px;
+    margin-left: 40px;
+  }
+
 }
