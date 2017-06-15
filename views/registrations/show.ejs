@@ -1,9 +1,8 @@
-<h1><%= user.username %></h1>
+<h1 class="username"><%= user.username %></h1>
 
-<img src="<%= user.imageSRC %>" alt="<%= user.username %>">
-
-
-<p><%= user.email %></p>
+<div class="imagebox">
+<img class="userimage" src="<%= user.imageSRC %>" alt="<%= user.username %>">
+</div>
 
 <% if(locals.isLoggedIn && currentUser.id === user.id ) { %>
 <a href="/users/<%= currentUser.id %>/edit" class="button">Edit</a>

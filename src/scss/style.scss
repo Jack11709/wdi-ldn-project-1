@@ -1,39 +1,88 @@
 @import "bootstrap/bootstrap-grid";
 
+*{
+  margin: 0;
+}
+
 body {
   font-family: 'Oswald';
-  background-color: #41464f;
+  background-color: #ECEFF1;
+  margin-bottom: 50px;
 }
 
-h1 {
-  color: white;
-  .n{
-    color: red;
-  }
-  .f{
-    color: white;
-  }
-  .l{
-    color: blue;
-  }
-}
 a{
   text-decoration: none;
-  color: #dce2ed;
+  color: #03A9F4;
 }
 
-.nav {
-  li {
-    font-weight: bold;
-    font-size: 25px;
-    display: inline;
-    padding: 0 20px;
+.mainContainer{
+  padding-top: 120px;
+}
+
+nav {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 120px;
+  background-color: #20273A;
+  ul {
+    &.left {
+      float: left;
+    }
+
+    &.right {
+      float: right;
+
+      li {
+        padding: 42px 20px;
+      }
+    }
+    margin-top: 0;
+    padding: 0;
+
+    img{
+      margin-top: 5px;
+    }
+
+    li {
+      font-weight: bold;
+      font-size: 25px;
+      display: inline-block;
+      padding: 0 20px;
+
+      &.logo{
+        a {
+          display: inline-block;
+        }
+      }
+    }
+
+    &.right{
+      float: right;
+      padding-left: 20px;
+      padding-right: 30px;
+    }
   }
 }
-#right{
-  float: right;
-  padding: 0 20px;
+footer{
+  height: 50px;
+  background-color: #20273A;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  p{
+    line-height: 50px;
+    text-align: center;
+    color: #03A9F4;
+  }
 }
+
+.newsHeadline{
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+}
+
 
 .name{
   text-align: center;
@@ -41,25 +90,95 @@ a{
 }
 
 .statbar {
-  margin: 50px 80px 80px 80px;
+  text-align: center;
+  width: 400px;
+  margin: 32px 80px 10px 80px;
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
   position: fixed;
-  background-color: lightgrey;
+  background-color: #EC3527;
   p {
     text-align: center;
   }
+  li{
+    letter-spacing: 2px;
+  }
+  h3{
+    text-decoration: underline;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
 }
+
 
 .stats {
   li {
     font-size: 15px;
     list-style: decimal;
-    line-height: 35px;
+    line-height: 30px;
   }
 }
 
 td {
-  text-align: center; 
+  text-align: center;
+}
+
+.username {
+  text-align: center;
+  width: 100%;
+}
+.userimage{
+  margin: 0 auto;
+  border-radius: 100px;
+  height: 150px;
+}
+
+.postIndex {
+  padding: 5px 30px;
+  text-align: center;
+}
+.card{
+  padding: 5px 30px;
+}
+.postFilter{
+  margin: 0 auto;
+  padding: 0 30px 20px;
+}
+.postType{
+  text-decoration: overline;
+}
+.postTitle {
+  padding: 20px 0;
+  font-size: 25px;
+}
+.postUser,.postComments {
+  padding: 10px 0;
+}
+.postForm {
+  margin: 0 auto;
+}
+.btn{
+  text-transform: uppercase;
+  height: 40px;
+  width: 60px;
+  background-color: #03A9F4;
+  border: solid 1px black;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  font-family: 'Oswald';
+  margin: 20px;
+}
+.link{
+  line-height: 40px;
+}
+.danger {
+  background-color: red;
+}
+.com {
+  width: 200px;
+}
+.content {
+  width: 100%;
 }

@@ -11,38 +11,44 @@
 </head>
 <body>
   <header>
-    <div class="nav left">
-      <ul>
-        <li><a href="/">Homepage</a></li>
+    <nav>
+      <ul class="left">
+        <li class="logo"><a href="/"><img src="https://www.eticketing.co.uk/nfl/site/assets/logo-main.png"></a></li>
+      </ul>
+      <ul class="right">
         <li><a href="/posts">Posts</a></li>
         <li><a href="/posts/new">New Post</a></li>
         <li><a href="/stats">Stats</a></li>
 
         <% if(!locals.isLoggedIn) { %>
-          <li id="right"><a href="/register">Register</a></li>
-          <li id="right"><a href="/login">Login</a></li>
-          <% } else { %>
-            <li id="right"><a href="/logout">Logout</a></li>
-            <li id="right"><a href="/users/<%= currentUser.id %>"><%= currentUser.username %></a></li>
-            <% } %>
-          </div>
-        </header>
-        <% for (const type in messages) { %>
-        <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+          <li><a href="/register">Register</a></li>
+          <li><a href="/login">Login</a></li>
+        <% } else { %>
+          <li><a href="/logout">Logout</a></li>
+          <li><a href="/users/<%= currentUser.id %>"><%= currentUser.username %></a></li>
         <% } %>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8">
-              <%- body %>
-            </div>
-            <aside>
-              <div class="statbar">
-                <h3 class="statslabel"></h3>
-                <ul class="stats">
-                </ul>
-              </div>
-            </aside>
-          </div>
+      </ul>
+    </nav>
+  </header>
+  <% for (const type in messages) { %>
+  <p class="alert alert-<%= type %>"><%= messages[type] %></p>
+  <% } %>
+  <div class="container mainContainer">
+    <div class="row">
+      <div class="col-lg-8">
+        <%- body %>
+      </div>
+      <aside>
+        <div class="statbar">
+          <h3 class="statslabel"></h3>
+          <ul class="stats">
+          </ul>
         </div>
+      </aside>
+    </div>
+  </div>
+  <footer>
+    <p>Made by Jack @ GA LDN</p>
+  </footer>
   </body>
 </html>

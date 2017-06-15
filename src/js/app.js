@@ -50,7 +50,7 @@ function getNews(){
   $.get('http://api.fantasy.nfl.com/v1/players/news?format=json')
   .done((data) => {
     for(let i = 0; i < 6; i++){
-      $('.news').append(`<h2>${data.news[i].body}</h2><p>${data.news[i].analysis}</p><br>`);
+      $('.news').append(`<h2 class="postTitle">${data.news[i].body}</h2><p>${data.news[i].analysis}</p><br>`);
     }
   });
 }

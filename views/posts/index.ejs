@@ -1,6 +1,6 @@
-<h1> Posts </h1>
-
-<form class="filter">
+<h1 class="postIndex"> Posts </h1>
+<div class="row postContainer">
+<form class="filter postFilter">
   <div>
     <select name="type" id="type" required>
       <option value="all"=>All</option>
@@ -12,19 +12,21 @@
 </form>
 
 
-<div class="container">
-<div class="row">
+<div>
+
   <% posts.forEach((post) => { %>
     <div>
       <div class="card" data-type="<%= post.type %>">
+
+          <h2 class="postType"><%= post.type %></h2>
+
         <a href="/posts/<%= post.id %>">
-          <h2><%= post.type %></h2>
-        </a>
-          <h3><%= post.title %></h3>
+          <h3 class="postTitle"><%= post.title %></h3>
+          </a>
 
           <p><%= post.content %></p>
-          <p> Posted by: <a href="/users/<%= post.createdBy.id %>"><%= post.createdBy.username %></a></p>
-          <p> Comments: <%= post.comments.length %>
+          <p class="postUser"> Posted by: <a href="/users/<%= post.createdBy.id %>"><%= post.createdBy.username %></a></p>
+          <p class="postComments"> Comments: <%= post.comments.length %>
       </div>
     </div>
   <% }) %>
