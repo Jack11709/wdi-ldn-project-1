@@ -1,48 +1,47 @@
 
-<div class="container">
 <h1><%= post.type %></h1>
-
-<div class="row">
-  <p> Posted by: <a href="/users/<%= post.createdBy.id %>"><%= post.createdBy.username %></p></a>
+<div class="card">
+  <div>
+    <h2><%= post.title %></h2>
+  </div>
+  <div>
+    <p><%= post.content %></h3>
+  </div>
+  <div>
+    <p> Posted by: <a href="/users/<%= post.createdBy.id %>"><%= post.createdBy.username %></p></a>
+  </div>
 </div>
-<div class="row">
-  <h2><%= post.title %></h2>
-</div>
-<div>
-  <p><%= post.content %></h3>
-</div>
-<div class="row">
-<% if(locals.isLoggedIn && post.belongsTo(currentUser)) { %>
-  <a href="/posts/<%= post.id %>/edit" class="btn link">Edit</a>
-  <form method="POST" action="/posts/<%= post.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <button class="btn danger">Delete</button>
-  </form>
-  <%  } %>
-</div>
-
-<% if(locals.isLoggedIn) { %>
-    <section>
-    <div class="row">
-      <form method="POST" action="/posts/<%= post.id %>/comments">
-      <textarea name="content" id="content" placeholder="Comment" class="content" required></textarea>
-      <button class="btn com">Leave Comment</button>
+  <div class="row showedit">
+    <% if(locals.isLoggedIn && post.belongsTo(currentUser)) { %>
+      <a href="/posts/<%= post.id %>/edit" class="btn btn-primary btnshow">Edit</a>
+      <form method="POST" action="/posts/<%= post.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-danger btnshow">Delete</button>
       </form>
-    </div>
-    </section>
-  <% } %>
-  <section>
-    <h4>Comments</h4>
-    <% post.comments.forEach((comment) => { %>
-      <p><%= comment.content %></p>
-      <small><%= comment.createdBy.username %></small>
-
-      <% if(locals.isLoggedIn && comment.belongsTo(currentUser)) { %>
-        <form method="POST" action="/posts/<%= post.id %>/comments/<%= comment.id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="btn danger com">Delete comment</button>
-        </form>
     <%  } %>
-  <% }) %>
-  </section>
-</div>
+  </div>
+
+  <% if(locals.isLoggedIn) { %>
+      <div class="row">
+        <form method="POST" action="/posts/<%= post.id %>/comments">
+          <div>
+            <textarea name="content" id="content" required class="com"></textarea>
+          </div>
+            <button class="btn btn-primary com">Leave Comment</button>
+        </form>
+      </div>
+  <% } %>
+      <h4>Comments</h4>
+      <% post.comments.forEach((comment) => { %>
+      <div class="card">
+      <p><%= comment.content %></p>
+      <small>By: <%= comment.createdBy.username %></small>
+
+        <% if(locals.isLoggedIn && comment.belongsTo(currentUser)) { %>
+          <form method="POST" action="/posts/<%= post.id %>/comments/<%= comment.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger">Delete comment</button>
+            </form>
+        <%  } %>
+        </div>
+      <% }) %>

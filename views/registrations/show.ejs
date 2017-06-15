@@ -1,17 +1,19 @@
 <h1 class="username"><%= user.username %></h1>
 
 <div class="imagebox">
-<img class="userimage" src="<%= user.imageSRC %>" alt="<%= user.username %>">
+<img class="userimage thumbnail" src="<%= user.imageSRC %>" alt="<%= user.username %>">
 </div>
 
+<div class="btn-user">
 <% if(locals.isLoggedIn && currentUser.id === user.id ) { %>
-<a href="/users/<%= currentUser.id %>/edit" class="button">Edit</a>
+<a href="/users/<%= currentUser.id %>/edit" class="btn btn-primary">Edit</a>
 
-<form method="POST" action="/users">
+<form method="POST" action="/users" class="block">
   <input type="hidden" name="_method" value="DELETE">
-  <button class="button alert">Delete</button>
+  <button class="btn btn-danger">Delete</button>
 </form>
 <% } %>
+</div>
 
 <h4> Current Posts: </h4>
 <% posts.forEach((post) => { %>
