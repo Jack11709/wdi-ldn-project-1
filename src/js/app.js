@@ -1,5 +1,16 @@
 $(() => {
-  getNews();
+  $.ajax({
+    url: '/news',
+    method: 'GET'
+  })
+  .then((data) => {
+    for(let i = 0; i < 6; i++){
+      $('.news').append(`<h2 class="postTitle">${data.news[i].body}</h2><p>${data.news[i].analysis}</p><br>`);
+    }
+  });
+
+
+  // getNews();
   ranking();
 
 
@@ -47,14 +58,14 @@ function ranking(){
 }
 
 
-function getNews(){
-  $.get('http://api.fantasy.nfl.com/v1/players/news?format=json')
-  .done((data) => {
-    for(let i = 0; i < 6; i++){
-      $('.news').append(`<h2 class="postTitle">${data.news[i].body}</h2><p>${data.news[i].analysis}</p><br>`);
-    }
-  });
-}
+// function getNews(){
+//   $.get('http://api.fantasy.nfl.com/v1/players/news?format=json')
+//   .done((data) => {
+//     for(let i = 0; i < 6; i++){
+//       $('.news').append(`<h2 class="postTitle">${data.news[i].body}</h2><p>${data.news[i].analysis}</p><br>`);
+//     }
+//   });
+// }
 
 
 function editorRanks(){

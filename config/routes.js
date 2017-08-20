@@ -7,9 +7,13 @@ const staticsController = require('../controllers/statics');
 const oauth = require('../controllers/oauth');
 const upload = require('../lib/upload');
 const statsController = require('../controllers/stats');
+const nflController = require('../controllers/nfl');
 
 router.route('/oauth/facebook')
   .get(oauth.facebook);
+
+router.route('/news')
+    .get(nflController.proxy);
 
 router.route('/')
   .get(staticsController.index);
