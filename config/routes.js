@@ -9,15 +9,19 @@ const upload = require('../lib/upload');
 const statsController = require('../controllers/stats');
 const nflController = require('../controllers/nfl');
 const nflStatsController = require('../controllers/nflStats');
+const statsPageController = require('../controllers/nflStatsPage');
 
 router.route('/oauth/facebook')
   .get(oauth.facebook);
+
+router.route('/statsPage')
+  .get(statsPageController.proxy);
 
 router.route('/news')
   .get(nflController.proxy);
 
 router.route('/statsBar')
-  .get(nflStatsController.proxy);  
+  .get(nflStatsController.proxy);
 
 router.route('/')
   .get(staticsController.index);
