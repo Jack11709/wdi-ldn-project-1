@@ -9,9 +9,20 @@ $(() => {
     }
   });
 
+  $.ajax({
+    url: '/statsBar',
+    method: 'GET'
+  })
+  .then((stats) => {
+    for(let i = 0; i < 15; i++){
+      $('.statslabel').html('2017 Editors Draft Ranks');
+      $('.stats').append(`<li>${stats.players[i].position} ${stats.players[i].firstName} ${stats.players[i].lastName}</li>`);
+    }
+  });
+
 
   // getNews();
-  ranking();
+  // ranking();
 
 
   $('#type').on('change',(e) => {
@@ -43,19 +54,19 @@ $(() => {
 
 });
 
-function ranking(){
-  let rankPicker = 1;
-  rankPicker = Math.floor(Math.random() * 4) + 1;
-  if(rankPicker === 1){
-    editorRanks();
-  } else if (rankPicker === 2){
-    qbRanks();
-  } else if (rankPicker === 3){
-    rbRanks();
-  } else {
-    wrRanks();
-  }
-}
+// function ranking(){
+//   let rankPicker = 1;
+//   rankPicker = Math.floor(Math.random() * 4) + 1;
+//   if(rankPicker === 1){
+//     editorRanks();
+//   } else if (rankPicker === 2){
+//     qbRanks();
+//   } else if (rankPicker === 3){
+//     rbRanks();
+//   } else {
+//     wrRanks();
+//   }
+// }
 
 
 // function getNews(){

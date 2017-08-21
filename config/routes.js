@@ -8,12 +8,16 @@ const oauth = require('../controllers/oauth');
 const upload = require('../lib/upload');
 const statsController = require('../controllers/stats');
 const nflController = require('../controllers/nfl');
+const nflStatsController = require('../controllers/nflStats');
 
 router.route('/oauth/facebook')
   .get(oauth.facebook);
 
 router.route('/news')
-    .get(nflController.proxy);
+  .get(nflController.proxy);
+
+router.route('/statsBar')
+  .get(nflStatsController.proxy);  
 
 router.route('/')
   .get(staticsController.index);
