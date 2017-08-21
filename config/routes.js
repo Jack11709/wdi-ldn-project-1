@@ -21,7 +21,10 @@ router.route('/news')
   .get(nflController.proxy);
 
 router.route('/statsBar')
-  .get(nflStatsController.proxy);
+  .get(nflStatsController.proxyEditors);
+
+router.route('/playersRanks')
+  .get(nflStatsController.proxyPlayers);
 
 router.route('/')
   .get(staticsController.index);
